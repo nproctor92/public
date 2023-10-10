@@ -16,7 +16,6 @@ def hangman():
         5:"  __  \n |  o \n | /0\ \n |  /  \n_|____",
         6:"  __  \n |  o \n | /0\ \n |  /\ \n_|____"
     }
-    stagekeys = ["lsstart","ls0","ls1","ls2","ls3","ls4","ls5"]
     source = " "
     while source[0] != "1" and source[0] != "2": 
         source = input("What is the source of your word? \n 1 - inputting your own \n 2 - random from wordlist \n")
