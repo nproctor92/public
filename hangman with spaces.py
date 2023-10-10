@@ -1,7 +1,7 @@
 import pandas as pd
 import csv
 import random
-file = open(r'C:\Users\mrdud\OneDrive\Desktop\hangman\clean_wordlist.csv','r')
+file = open('clean_wordlist.csv','r')
 temp = list(csv.reader(file,delimiter=","))
 cleaned = [i[0] for i in temp]
 
