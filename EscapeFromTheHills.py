@@ -94,8 +94,8 @@ area at the top of the driveway. To the North is a barn. To the East is a car po
     "12": f"Standing stark against the horizon is a squat, sturdy barn with peeling white paint and a lightly-corroded \
 tin roof. ",
     "13": f"In a shed sits a still consisting of several copper containers connected by metal tubing dripping mer\
-rily away. You now know what snorting hand sanitizer would smell and feel like. A shelf lined with empty half-gallon ju\
-gs stands right of the receiving flask. ",
+rily away. You now know what snorting hand sanitizer would smell and feel like. A shelf lined with empty gallon jugs \
+stands to the right of the receiving flask. ",
     "21": f"You are outside a car port with two vehicles in it. One is an 80's Oldsmobile on blocks. The other is a For\
 d pickup truck with a FlexFuel badge on the tailgate. It looks clean and well-maintained. To the East is a tree with a \
 tree swing. To the West is the turnaround area at the top of the driveway. To the north is a double-wide. {southout}",
