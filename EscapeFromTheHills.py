@@ -1,5 +1,4 @@
 # improvement notes - different description when you have been to a place in the reference to that place
-# obviously still need to finish implementing taking and using items, etc.
 loc = [1, 1]
 inv = []
 part2 = ""
@@ -38,6 +37,7 @@ inpconvert = {
     "keyring": "key",
     "ring of keys": "key",
     "truck key": "key",
+    "keys": "key",
     "coat": "coat",
     "hoodie": "coat",
     "overcoat": "coat",
