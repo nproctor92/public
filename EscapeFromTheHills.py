@@ -34,10 +34,10 @@ inpconvert = {
     "jug of moonshine": "moonshine",
     "knife": "knife",
     "key": "key",
+    "keys": "key",
     "keyring": "key",
     "ring of keys": "key",
     "truck key": "key",
-    "keys": "key",
     "coat": "coat",
     "hoodie": "coat",
     "overcoat": "coat",
@@ -80,6 +80,7 @@ locitems = {
     "122": ["key", "coat"],
     "133": ["rifle"]
 }
+locitkeys = list(locitems.keys())
 eastout = "To the East is a wide, smooth, deep, and fast-moving river."
 southout = "To the South is a dense forest that, despite the brightness of the midday sun, is already shrouded in dark\
 ness."
@@ -117,8 +118,8 @@ ing but generous patterns of shade along the shoreline. ",
 y-bearded old man with a round face bearing more broken veins than a remedial phlebotomist class. His heavily-lidded ey\
 es are unfocused, his faded "Ron Paul \'08" t-shirt is stained, and his jeans came by their fashionable knee-rips hones\
 tly. In his right hand is a long, straight, stick whose burnt end is resting on the rocks marking the outer ring of the\
- fire pit. Around him is scattered a handful of gallon jugs, all of which reek of moonshine, and all but one of which i\
-s empty. The fire is crackling merrily. To the South is a tree with a tree swing. To the North is a tree with a small h\
+ fire pit. Around him is scattered a handful of gallon jugs, which were filled to seemingly random levels. The fire is \
+crackling merrily. To the South is a tree with a tree swing. To the North is a tree with a small h\
 ouse nestled in the branches. To the West is a double-wide. {eastout}',
     "33": f"Standing alone in a meadow is a tall tree with a small house nestled in the branches. A series of boards na\
 iled to the trunk serves as a ladder. The meadow is a mixture of shin-high grass, fluffy purple clovers, and dandelions\
@@ -173,6 +174,7 @@ def interpret():
     global knot
     global truckfilled
     global locact
+    global locitkeys
     if work[0] == "go":
         if (work[1] == "north" or work[1] == "forward") and (loc != [11, 2] and loc != [12, 2] and loc != [13, 3]):
             if loc[1] + 1 <= 3:
@@ -307,7 +309,7 @@ You move towards it as fast as you can, bursting into the light, where you find 
             print("You are not in anything that you can exit")
     elif work[0] == "take":
         temp = " ".join(work[1:])
-        if temp in inpkeys:
+        if temp in inpkeys and lockey in locitkeys:
             itconv = inpconvert[temp]
             if loc == [3, 1] and itconv in locitems[lockey]:
                 if knot == 1:
@@ -334,7 +336,7 @@ your hands and you fall back hard. The inner tube is still firmly attached to th
                     print(f"You take the {temp}")
                     counter = 0
             elif itconv == "moonshine" and loc == [3, 2]:
-                x = "The old man pulls the nearest jug closer to him and gives you a warning growl."
+                x = "The old man pulls the nearest jug closer to himself and gives you a warning growl."
                 print(conlinre(x))
             elif itconv in locitems[lockey]:
                 inv.append(itconv)
@@ -429,7 +431,7 @@ nd you, you give it one last wave of farewell."
                     print(conlinre(x))
                     victory = "Y"
                 else:
-                    print(head + tail)
+                    print("This will not accomplish anything.")
             else:
                 print("Item(s) not recognized.")
         else:
@@ -505,7 +507,7 @@ foot of the driveway, you make a sharp left and head back towards town."
                             x = "There is nothing productive you can use the key for here."
                             print(conlinre(x))
                     elif temp == "inner tube":
-                        if loc[1] == 3:
+                        if loc[0] == 3:
                             x = "You carry the inner tube over to the river bank and wade a few steps in. The water is \
 lukewarm. Bending over to ensure your center of gravity is over the middle of the inner tube, you step deeper into the \
 river. The current pulls at your legs. Right as your feet start to lose contact with the ground, you use them for one f\
@@ -537,6 +539,8 @@ sn't going anywhere until it has fuel."
                         else:
                             x = "The truck door is firmly locked. You would need a key to unlock it."
                             print(conlinre(x))
+                    else:
+                        print("Nothing happens.")
                 else:
                     print("item not available.")
             else:
@@ -589,9 +593,9 @@ between the sacks of flower is a small cask filled with gunpowder. A trail of po
  North is a still. To the East is a double-wide. To the South is a turnaround area at the top of the driveway. \
 {westout}"
                 else:
-                    part2 = f"A small crater smokes gently away in front of the door frame. The sliding doors hang limpl\
-y at an angle. Through the gap in the doors, you see what look like stacks of crates. To the North is a still. To the E\
-ast is a double-wide. To the South is a turnaround area at the top of the driveway. {westout}"
+                    part2 = f"A small crater smokes gently away in front of the door frame. The sliding doors hang limp\
+ly at an angle. Through the gap in the doors, you see what look like stacks of crates. To the North is a still. To the \
+East is a double-wide. To the South is a turnaround area at the top of the driveway. {westout}"
                 lockey = "".join([str(i) for i in loc])
                 locact = locinter[lockey]
                 locstrtemp = locdesc[lockey] + part2
@@ -767,7 +771,7 @@ mountain."
                 else:
                     interpret()
     if victory == "Y":
-        x = "\n \n Congratulations, you won! \n \n Written and programmed by Nicolas Proctor \n last updated: 10/25/2023"
+        x="\n \n Congratulations, you won! \n \n Written and programmed by Nicolas Proctor \n last updated: 11/24/2023"
         print(conlinre(x))
     elif victory == "Q":
         print("Goodbye")
@@ -775,5 +779,6 @@ mountain."
         print("---GAME-OVER---")
     else:
         print("gg ez no re")
+
 
 game()
